@@ -2,6 +2,7 @@ import Foundation
 import Yams
 import HIPAACheckerCore
 import UIKit
+import SwiftyJSON
 
 public struct HIPAAChecker {
     public private(set) var token = ""
@@ -281,8 +282,9 @@ public struct HIPAAChecker {
             result["\(index)"] = params as Any
 
         }
-        print(result)
         if (result.count != 0){
+            let json = JSON(result)
+            print(json)
             self.sendHIPAAReport(projectId: projectId, result: result, token: token)
         }
 
